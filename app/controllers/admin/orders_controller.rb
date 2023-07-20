@@ -5,11 +5,11 @@ class Admin::OrdersController < ApplicationController
   
   def show
     @customer = current_customer
-    @order_items = @customer.order_items
+    @orders = Order.all
+    @order_items = @customer.order_items.all
     @total = 0
     @totals = @order_items.inject(0) { |sum, order_items| sum + order_items.subtotal }
     @shipping_fee = 800
-    
   end
   
   def update

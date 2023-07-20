@@ -1,5 +1,6 @@
 <h2>注文履歴詳細</h2>
 
+<%= form_with model: @orders, url:admin_order_path(@customer), local:true do |f| %>
 <table class="table">
   <tr>
     <th>購入者</th>
@@ -18,14 +19,15 @@
 
   <tr>
     <th>支払い方法</th>
-    <td><%= %><td>
+    <td><%= f.collection_select(:payment_method, @orders, :payment_method, :name) %><td>
   </tr>
 
   <tr>
     <th>注文ステータス</th>
-    <td><%= %><td>
+    <td><%= f.collection_select(:status, @orders, :status, :name) %><td>
     <th><%= f.submit "更新",class: "btn btn-success" %></th>
   </tr>
+  <% end %>
 </table>
 
 
@@ -45,7 +47,9 @@
     <td><%= order_item.price %></td>
     <td><%= order_item.quantity %></td>
     <td><%= @total  %></td>
-    <td><%= order_item.making_status %></td>
+<% end %>
+    <%= form_with model: @order_items, url:admin_order_detail_path(@customer), local:true do |f| %>
+    <td><%= f.collection_select(:order_id, @order_items, :making_status, :name) %></td>
     <th><%= f.submit "更新",class: "btn btn-success" %></th>
   </tr>
 <% end %>
