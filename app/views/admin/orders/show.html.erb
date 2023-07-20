@@ -20,11 +20,11 @@
     <th>支払い方法</th>
     <td><%= %><td>
   </tr>
-  
+
   <tr>
     <th>注文ステータス</th>
     <td><%= %><td>
-    <th><%= f.submit "更新",class: "btn btn-success" %></th>  
+    <th><%= f.submit "更新",class: "btn btn-success" %></th>
   </tr>
 </table>
 
@@ -37,15 +37,15 @@
     <th>小計</th>
     <th>製作ステータス</th>
   </tr>
-  
-<% @cart_items.each do |cart_item| %>
+
+<% @order_items.each do |order_item| %>
 <% @total = @total + cart_item.subtotal %>
   <tr>
-    <td><%= cart_item.name %></td>
-    <td><%= cart_item.price %></td>
-    <td><%= cart_item.quantity %></td>
+    <td><%= order_item.name %></td>
+    <td><%= order_item.price %></td>
+    <td><%= order_item.quantity %></td>
     <td><%= @total  %></td>
-    <td><%= @order_items.making_status %></td>
+    <td><%= order_item.making_status %></td>
     <th><%= f.submit "更新",class: "btn btn-success" %></th>
   </tr>
 <% end %>
@@ -61,7 +61,7 @@
     <th>送料</th>
     <td><%= @shipping_fee %>円<td>
   </tr>
-  
+
   <tr>
     <th>請求金額合計</th>
     <td><%= @totals + @shipping_fee %>円<td>
