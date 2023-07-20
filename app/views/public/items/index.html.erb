@@ -1,0 +1,18 @@
+<div class='container'>
+ <div class='row'>
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+    
+    <h2 class="font-weight-bold">商品一覧(全<%= @items.count %>件)</h2>
+    
+		  <% @items.each do |item| %>
+			 <%= link_to item_path(item.id) do %>
+				<%# <%= attachment_image_tag item, :image, :fill, 200, 150, format: 'jpeg',fallback: "no_image.jpg" %><br>
+				 <%= item.name %>
+				 ¥<%= item.without_tax_price.to_s(:delimited, delimiter: ',') %>
+				 
+			 <% end %>
+		  <% end %>
+	
+  </div>
+ </div>
+</div>
