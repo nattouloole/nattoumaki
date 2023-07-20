@@ -7,5 +7,9 @@ class Item < ApplicationRecord
   def add_tax_sales_price
    (self.without_tax_price * 1.10).round
   end
-  
+
+  def get_image
+    (image.attached?) ? image : 'no-image.jpg'
+  end
+
 end
