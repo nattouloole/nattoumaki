@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 
   get "/" => "homes#top"
 
-  resources :items
+  resources :items, only: [:index, :show]
 
   resources :genres, only: [:index, :create, :edit, :update]
 

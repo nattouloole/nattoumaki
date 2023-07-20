@@ -1,2 +1,29 @@
-<h2>商品一覧</h2>
+<div class="container">  
+  <div class="row">
+   <h2>商品一覧</h2>
+    <table class="table">
+        
+     <thead>
+       <tr>
+         <th>商品ID</th>
+         <th>商品名</th>
+         <th>税抜価格</th>
+         <th>ジャンル</th>
+         <th>ステータス</th>
+       </tr>
+     </thead>
 
+<tbody>
+<% @admins.each do |admin| %>
+ <tr>
+   <td></td>
+     <td><%= link_to admin.name, admin_item_path(admin.customer_id) %></td>
+       <td><%= link_to book.title, book_path(book.id) %></td>
+        <td><%= admin.without_tax_price %></td>
+       <td><%= admin.genre_id %></td>
+      </tr>
+     </tbody>
+    <% end %>
+   </table>
+  </div>
+ </div>
