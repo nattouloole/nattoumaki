@@ -7,22 +7,22 @@
             <tr>
               <th> 会員ID <%= @customer.id %></th>
 
-              <th> 氏名 <%= f.text_field :last_name %><%= f.text_field :first_name %></th>
+               <th> 氏名 <%= f.text_field :last_name %><%= f.text_field :first_name %></th>
 
-              <th> フリガナ <%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %></th>
+                <th> フリガナ <%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %></th>
 
-              <th> 郵便番号 <%= f.text_field :post_code %></th>
+                 <th> 郵便番号 <%= f.text_field :post_code %></th>
 
-              <th> 住所 <%= f.text_area :address %></th>
+                  <th> 住所 <%= f.text_area :address %></th>
 
-              <th> 電話番号 <%= f.text_field :phone_number %></th>
+                 <th> 電話番号 <%= f.text_field :phone_number %></th>
 
-              <th> メールアドレス <%= f.text_field :email %></th>
+                <th> メールアドレス <%= f.text_field :email %></th>
 
-              <th> 会員ステータス <%= f.select :is_withdrawal, [["有効",true],["退会",false]] %></th>
+               <th> 会員ステータス <%= f.select :is_withdrawal, [["有効",true],["退会",false]] %></th>
 
 　　　　　　　<th><%= f.submit "変更を保存" %></th>
-           </tr>
+             </tr>
           </thead>
         <% end %>
       </div>
