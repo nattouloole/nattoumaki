@@ -17,3 +17,4 @@ class Public::ItemsController < ApplicationController
     params.require(:item).permit(:image, :name, :explanation, :genre_id, :without_tax_price, :is_sale)
   end
 end
+
