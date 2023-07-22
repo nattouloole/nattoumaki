@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div>
+      <table class="table">
+       <tbody>
+         <td>
+				   <%= image_tag @item.get_image, size: '200x120' %>
+			     <%= @item.name %>
+			     <%= @item.explanation %>
+			     ¥<%= @item.without_tax_price.to_s(:delimited, delimiter: ',') %>(税込)
+         </td>
+       </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -3,7 +3,7 @@
 class Public::RegistrationsController < Devise::RegistrationsController
   
   def new
-    
+    @customer=Customer.new
   end
   
   def create
