@@ -2,7 +2,7 @@
 
 <table class="table">
   <tr>
-    <td><%= @item.image %></td>
+    <td><%=image_tag @item.image.variant(resize: "100x100^") %></td>
   </tr>
   
   <tr>
