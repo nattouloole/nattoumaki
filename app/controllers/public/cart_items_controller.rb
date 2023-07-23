@@ -22,7 +22,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def index
-    @cart_items = current_customer.cart_items.all
+    @cart_items = current_customer.cart_items
     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
   end
 

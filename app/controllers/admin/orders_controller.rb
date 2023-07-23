@@ -4,7 +4,8 @@ class Admin::OrdersController < ApplicationController
   end
   
   def show
-    @customer = current_customer
+    @order = Order.find(params[:id])
+    @customer = orders.customer.find(params[:id])
     @orders = Order.all
     @order_items = @customer.order_items.all
     @total = 0

@@ -18,8 +18,10 @@
     <th><%=image_tag cart_item.item.image.variant(resize: "20x20^") %><%= cart_item.item.name %></th>
     <th><%= cart_item.item.add_tax_sales_price %></th>
     <th>
+
       <%= form_with model: cart_item, url:cart_item_path(cart_item.id), local:true do |f| %>
        <%= f.select :quantity, *[1..10] %>
+
        <%= f.submit "変更", class:"btn btn-success" %>
       <% end %>
     </th>
