@@ -1,19 +1,20 @@
 <div class='container'>
  <div class='row'>
-  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
-
    <h2 class="font-weight-bold">商品一覧(全<%= @items.count %>件)</h2>
-   <table class='table'>
-		 <% @items.each do |item| %>
-		  <td>
-			  <%= link_to item_path(item.id) do %>
-				 <%= image_tag item.get_image, size: '200x120' %><br>
-			  <% end %>
-			  <%= item.name %>
-			  ¥<%= item.without_tax_price.to_s(:delimited, delimiter: ',') %>
-		  </td>
-		 <% end %>
-   </table>
-  </div>
+   <div class="row">
+     <% @items.each do |item| %>
+	    <div class="col-md-3">
+		  <%= link_to item_path(item.id) do %>
+		    <%= image_tag item.get_image, size: '200x120' %><br>
+		  <% end %>
+		  <div class="text-left"><%= item.name %></div>
+		  <div class="text-left">¥<%= item.without_tax_price.to_s(:delimited, delimiter: ',') %></div>
+		</div>
+	 <% end %>
+   </div>
+ </div>
+
+ <div class="row">
+ 	<div class="px-5 px-sm-0 mx-auto"><%= paginate @items %></div>
  </div>
 </div>

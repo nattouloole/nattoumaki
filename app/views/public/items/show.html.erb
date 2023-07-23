@@ -1,16 +1,20 @@
 <div class="container">
   <div class="row">
-    <div>
-      <table class="table">
-       <tbody>
-         <td>
-				   <%= image_tag @item.get_image, size: '200x120' %>
-			     <%= @item.name %>
-			     <%= @item.explanation %>
-			     ¥<%= @item.without_tax_price.to_s(:delimited, delimiter: ',') %>(税込)
-         </td>
-       </tbody>
-      </table>
+    <div class="col-md-5">
+      <%= image_tag @item.get_image, size: '400x240' %>
     </div>
+     <div class="col-md-6 offset-md-1">
+     <%= form_for @cart_item, url: cart_items_path(item_id: @item), method: :post do |f| %>
+        <h1><%= @item.name %></h1>
+        <h2><%= @item.explanation %></h2>
+        <h3>¥<%= @item.without_tax_price.to_s(:delimited, delimiter: ',') %>(税込)</h3>
+        
+       <%= f.hidden_field :name, :value => @item.id %>
+       <div>
+        <%= f.select :quantity, *[1..10] %>
+	    <%= f.submit "カートに入れる" %>
+	   </div>
+	 </div>
+	 <% end %>
   </div>
 </div>
