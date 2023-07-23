@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
-    <h2><%= customer.name %>さんの会員詳細</h2>
+    <h2><%= @customer.name %>さんの会員詳細</h2>
       <table class="table table-hover table-inverse">
           <thead>
             <tr>
               <th> 会員ID <%= @customer.id %></th>
 
-              <th> 氏名 <%= @customer.name %></th>
+              <th> 氏名 <%= @customer.last_name %><%= @customer.first_name %></th>
 
-              <th> フリガナ <%= @customer.name_kana %></th>
+              <th> フリガナ <%= @customer.last_name_kana %><%= @customer.first_name_kana %></th>
 
               <th> 郵便番号 <%= @customer.post_code %></th>
 
@@ -18,11 +18,11 @@
 
               <th> メールアドレス <%= @customer.email %></th>
 
-              <th> 会員ステータス <%= @customer.is_withdrawal %></th>
+              <th> 会員ステータス <%= @customer.is_withdrawal ? "有効" : "退会" %></th>
 
-              <th><%= link_to "編集する", edit_admin_customer_path(@customer.id) %></th>
+              <th><%= link_to "編集する", edit_admin_customer_path(@customer) %></th>
     |
-              <th><%= link_to "注文履歴一覧を見る", admin_orders_path(@customer.id) %></th>
+              <th><%= link_to "注文履歴一覧を見る", admin_orders_path %></th>
             </tr>
           </thead>
       </table>

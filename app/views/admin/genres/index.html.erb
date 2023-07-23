@@ -18,11 +18,10 @@
    
    <tbody>
     <% @genres.each do |genre| %>
-    <td><%= genre.post_code %></td>
-    <td></td>
+    <td><%= genre.name %></td>
     <th><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %></th>
    </tbody>
    <% end %>
   </table>
-   
+  
  
