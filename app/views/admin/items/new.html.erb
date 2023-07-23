@@ -29,11 +29,14 @@
     <th><%= f.text_field :without_tax_price %>円<th>
   </tr>
 
-  <tr>
-    <th>販売ステータス</th>
-    <th><%= f.select :is_sale, [["販売中",true],["販売停止中",false]] %></th>
-  </tr>
 </table>
+
+<div>
+    <%= f.radio_button :is_sale, :true %>
+    <%= f.label :is_sale_true, "販売中" %>
+    <%= f.radio_button :is_sale, :false %>
+    <%= f.label :is_sale_false, "販売停止中" %>
+</div>
 
 <div class="text-center">
   <%= f.submit "新規登録",class: "btn btn-success" %>
