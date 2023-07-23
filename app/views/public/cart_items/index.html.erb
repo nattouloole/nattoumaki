@@ -16,9 +16,13 @@
   <% @cart_items.each do |cart_item| %>
   <tr>
     <th><%=image_tag current_customer.cart_items.image.variant(resize: "20x20^") %><%= cart_item.item.name %></th>
-    　<!--数量用のプルダウンの作成方法を考える-->
-    <th><%= link_to "変更", cart_item_path(cart_item.id), method: :patch, class:"btn btn-success" %></th>
-    <th><%= cart_item.item.add_tax_sales_price.to_s(:dalimited) %></th>
+    <th>
+      <%= form_with model: cart_item, url:cart_item_path, local:true do |f| %>
+       <%= <%= f.select :quantit, *[1..10] %>
+       <%= f.submit "変更", class:"btn btn-success" %>
+      <% end %>
+    </th>
+    <th><%= cart_item.sum_of_price %></th>
     <th><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class:"btn btn-danger" %></th>
   </tr>
 </table>
