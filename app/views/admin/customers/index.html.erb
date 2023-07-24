@@ -3,7 +3,6 @@
     <h2>会員一覧</h2>
 
       <table class="table table-hover table-inverse">
-
         <thead>
           <tr>
             <th>会員ID</th>
@@ -16,13 +15,14 @@
        <tbody>
         <% @customers.each do |customer| %>
           <tr>
-            <td></td>
+            <td><%= customer.id %></td>
             <td><%= link_to customer.name, admin_customer_path(customer.id) %></td>
             <td><%= customer.email %></td>
             <td><%= customer.is_withdrawal ? "有効" : "退会" %></td>
           </tr>
        </tbody>
       <% end %>
+      <%= paginate @customers %>
       </table>
     </div>
   </div>
