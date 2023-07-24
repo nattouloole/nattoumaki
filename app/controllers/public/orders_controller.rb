@@ -26,7 +26,7 @@ end
     render :comfirm
     end
 
-def complete
+  def complete
 
   end
   
