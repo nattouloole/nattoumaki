@@ -1,4 +1,6 @@
 class Admin::OrdersController < ApplicationController
+  before_action :authenticate_admin!
+  
   def index
     @orders = Order.all.page(params[:page]).per(10)
   end
@@ -15,8 +17,11 @@ class Admin::OrdersController < ApplicationController
   
   def update
     @order = Order.find(params[:id])
-    @order.update(order_params)
-    redirect_back(fallback_location: root_path)
+    @order_details = OrderDetail.where(order_id: params[:id])
+    if @order.update(order_params)
+       @order_details.update_all(making_status: 1) if @order.status == "payment_confirmation"
+    end   
+       redirect_back(fallback_location: root_path)
   end
   
   private
