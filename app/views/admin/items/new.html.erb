@@ -1,22 +1,26 @@
-<h2>商品新規登録</h2>
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+<h2 class="my-5">商品新規登録</h2>
 
 <%= form_with model: @item, url:admin_items_path, local:true do |f| %>
-<table class="table">
+<table class="table table-borderless">
 
    <tr>
     <th>商品画像</th>
-    <th><%= f.file_field :image %></th>
+    <th><%= f.file_field :image, size: 30 %></th>
   </tr>
 
 
   <tr>
     <th>商品名</th>
-    <th><%= f.text_field :name %></th>
+    <th><%= f.text_field :name, size: 30 %></th>
   </tr>
 
   <tr>
     <th>商品説明</th>
-    <th><%= f.text_area :explanation %></th>
+    <th><%= f.text_area :explanation, size: "30x5" %></th>
   </tr>
 
   <tr>
@@ -26,19 +30,26 @@
 
   <tr>
     <th>税抜価格</th>
-    <th><%= f.text_field :without_tax_price %>円<th>
+    <th><%= f.text_field :without_tax_price, size: 30 %>円<th>
   </tr>
 
-</table>
-
-<div>
+  <tr>
+    <th>販売ステータス</th>
+    <th>
     <%= f.radio_button :is_sale, :true %>
     <%= f.label :is_sale_true, "販売中" %>
     <%= f.radio_button :is_sale, :false %>
     <%= f.label :is_sale_false, "販売停止中" %>
-</div>
+    </th>
+  </tr>
+    
+</table>
 
 <div class="text-center">
   <%= f.submit "新規登録",class: "btn btn-success" %>
 </div>
   <% end %>
+  
+    </div>
+  </div>
+</div> 
