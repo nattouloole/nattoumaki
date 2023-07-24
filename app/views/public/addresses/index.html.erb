@@ -3,7 +3,7 @@
 <table class="table">
   <thead>
     <%= form_with model: @address, url:"/addresses", local:true do |f| %>
-    
+
     <tr>
       <th> 郵便番号(ハイフンなし) <%= f.text_field :post_code, size: 40 %></th>
     </tr>
