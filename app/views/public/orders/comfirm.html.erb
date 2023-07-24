@@ -8,12 +8,38 @@
         <td>数量</td>
         <td>小計</td>
     </tr>
-    <%= total = 0 %>
+    <% total = 0 %>
     <% @cart_items.each do |cart_item| %>
     <tr>
         <td><%= image_tag cart_item.item.get_image, size: "100x100" %><%= cart_item.item.name %></td>
         <td><%= cart_item.item.name %></td>
-        
-    </tr>
+　　　　 </td>
+          <td><%= (cart_item.item.price*1.08).to_i %></td>
+          <td><%= cart_item.quantity %></td>
+          <td>
+             <% subtotal = ((cart_item.item.price*cart_item.quantity)*1.08).to_i %> <!--小計の計算-->
+             <%= subtotal %>#小計を表示
+           </td>
+         </tr>
+         <% total += (cart_item.item.price*cart_item.quantity)*1.08 %> #アイテムごとに合計金額に加算
+     <% end %>
 </table>
+
+<table>
+     <tr>
+       <th>送料</th>
+        <% @order.postage = 800 %>
+       <td><%= @order.postage %></td>
+      </tr>
+     <tr>
+       <th>商品合計</th>
+       <td><%= total.to_i %></td>
+      </tr>
+      <tr>
+        <th>請求金額</th>
+        <% @order.total_payment = @order.postage + total.to_i %>
+        <td><%= @order.total_payment %></td>
+      </tr>
+</table>
+    
 </div>
