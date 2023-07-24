@@ -27,9 +27,9 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-　　@cart_item = current_customer.cart_items.find(params[:id])
-　　@cart_item.update(cart_item_params)
-　　redirect_back(fallback_location: root_path)
+    @cart_item = current_customer.cart_items.find(params[:id])
+    @cart_item.update(cart_item_params)
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy

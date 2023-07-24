@@ -15,7 +15,7 @@
 
   <% @cart_items.each do |cart_item| %>
   <tr>
-    <th><%=image_tag cart_item.item.image.variant(resize: "20x20^") %><%= cart_item.item.name %></th>
+    <th><%=image_tag cart_item.item.get_image, size: "100x100" %><%= cart_item.item.name %></th>
     <th><%= cart_item.item.add_tax_sales_price %></th>
     <th>
 
