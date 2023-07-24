@@ -3,7 +3,7 @@
 <table class="table">
   <thead>
     <%= form_with model: @address, url:"/addresses", local:true do |f| %>
-    
+
     <tr>
       <th> 郵便番号(ハイフンなし) <%= f.text_field :post_code, size: 40 %></th>
     </tr>
@@ -34,19 +34,10 @@
     <% @addresses.each do |addresses| %>
     <tr>
       <td><%= addresses.post_code %></td>
-    </tr>
-
-    <tr>
-      <td><%= addresseses.address %></td>
-    </tr>
-
-    <tr>
+      <td><%= addresses.address %></td>
       <td><%= addresses.name %></td>
-    </tr>
-
-    <tr>
-       <td><%= link_to "編集する", edit_address_path(genre.id), class: "btn btn-success" %></td>
-       <td><%= link_to "削除する", addresses_path(addresses.id), method: :delete %></td>
+      <td><%= link_to "編集する", edit_address_path(addresses.id), class: "btn btn-success" %></td>
+      <td><%= link_to "削除する", address_path(addresses.id), method: :delete, class: "btn btn-danger" %></td>
     </tr>
    </tbody>
    <% end %>
