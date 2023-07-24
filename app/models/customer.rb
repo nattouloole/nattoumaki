@@ -12,4 +12,8 @@ class Customer < ApplicationRecord
     super && (is_withdrawal == false)
   end
   
+  def full_name
+    last_name + '' + first_name
+  end  
+  
 end
