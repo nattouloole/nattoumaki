@@ -14,22 +14,19 @@
         <td><%= image_tag cart_item.item.get_image, size: "100x100" %><%= cart_item.item.name %></td>
         <td><%= cart_item.item.name %></td>
 　　　　 </td>
-          <td><%= (cart_item.item.price*1.08).to_i %></td>
+          <td><%= (cart_item.price).to_i %></td>
           <td><%= cart_item.quantity %></td>
-          <td>
-             <% subtotal = ((cart_item.item.price*cart_item.quantity)*1.08).to_i %> <!--小計の計算-->
-             <%= subtotal %>#小計を表示
-           </td>
+          
          </tr>
-         <% total += (cart_item.item.price*cart_item.quantity)*1.08 %> #アイテムごとに合計金額に加算
+         
      <% end %>
 </table>
 
 <table>
      <tr>
        <th>送料</th>
-        <% @order.postage = 800 %>
-       <td><%= @order.postage %></td>
+        <% @order.shipping_fee = 800 %>
+       <td><%= @order.shipping_fee %></td>
       </tr>
      <tr>
        <th>商品合計</th>
@@ -37,7 +34,7 @@
       </tr>
       <tr>
         <th>請求金額</th>
-        <% @order.total_payment = @order.postage + total.to_i %>
+        <% @order.total_payment = @order.shipping_fee + total.to_i %>
         <td><%= @order.total_payment %></td>
       </tr>
 </table>
