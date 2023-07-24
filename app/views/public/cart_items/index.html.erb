@@ -15,16 +15,20 @@
 
   <% @cart_items.each do |cart_item| %>
   <tr>
-    <th><%=image_tag current_customer.cart_items.image.variant(resize: "20x20^") %><%= cart_item.item.name %></th>
+    <th><%=image_tag cart_item.item.get_image, size: "100x100" %><%= cart_item.item.name %></th>
+    <th><%= cart_item.item.add_tax_sales_price %></th>
     <th>
-      <%= form_with model: cart_item, url:cart_item_path, local:true do |f| %>
-       <%= <%= f.select :quantit, *[1..10] %>
+
+      <%= form_with model: cart_item, url:cart_item_path(cart_item.id), local:true do |f| %>
+       <%= f.select :quantity, *[1..10] %>
+
        <%= f.submit "変更", class:"btn btn-success" %>
       <% end %>
     </th>
     <th><%= cart_item.sum_of_price %></th>
     <th><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class:"btn btn-danger" %></th>
   </tr>
+  <% end %>
 </table>
 
 <table>
@@ -39,5 +43,5 @@
 </div>
 
 <div>
-  <%= link_to "情報入力に進む", new_order_path, class:"btn btn-success" %>  
+  <%= link_to "情報入力に進む", new_order_path, class:"btn btn-success" %>
 </div>

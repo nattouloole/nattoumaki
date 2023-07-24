@@ -9,7 +9,7 @@ class Customer < ApplicationRecord
   has_many :addresses, dependent: :destroy
   
   def active_for_authentication?
-    super && (is_withdrawl == false)
+    super && (is_withdrawal == false)
   end
   
 end

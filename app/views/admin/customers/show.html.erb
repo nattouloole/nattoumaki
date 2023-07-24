@@ -1,12 +1,13 @@
 <div class="container">
   <div class="row">
-    <h2><%= customer.name %>さんの会員詳細</h2>
+    <h2><%= @customer.name %>さんの会員詳細</h2>
       <table class="table table-hover table-inverse">
           <thead>
             <tr>
               <th> 会員ID <%= @customer.id %></th>
             </tr>
 
+<<<<<<< HEAD
             <tr>
               <th> 氏名 <%= @customer.last_name %> <%= @customer.first_name %></th>
             </tr>
@@ -14,6 +15,11 @@
             <tr>
               <th> フリガナ <%= @customer.last_name_kana %> <%= @customer.first_name_kana %></th>
             </tr>
+=======
+              <th> 氏名 <%= @customer.last_name %><%= @customer.first_name %></th>
+
+              <th> フリガナ <%= @customer.last_name_kana %><%= @customer.first_name_kana %></th>
+>>>>>>> origin/develop
 
             <tr>
               <th> 郵便番号 <%= @customer.post_code %></th>
@@ -31,6 +37,7 @@
               <th> メールアドレス <%= @customer.email %></th>
             </te>
 
+<<<<<<< HEAD
             <tr>
               <th> 会員ステータス <%= @customer.is_withdrawal %></th>
             </tr>
@@ -39,6 +46,13 @@
               <th><%= link_to "編集する", edit_admin_customer_path(@customer.id), class:'btn btn-success' %></th>
     |
               <th><%= link_to "注文履歴一覧を見る", admin_orders_path(@customer.id), class:'btn btn-primary' %></th>
+=======
+              <th> 会員ステータス <%= @customer.is_withdrawal ? "有効" : "退会" %></th>
+
+              <th><%= link_to "編集する", edit_admin_customer_path(@customer) %></th>
+    |
+              <th><%= link_to "注文履歴一覧を見る", admin_orders_path %></th>
+>>>>>>> origin/develop
             </tr>
           </thead>
         </table>

@@ -35,19 +35,18 @@
     <% @addresses.each do |addresses| %>
     <tr>
       <td><%= addresses.post_code %></td>
-    </tr>
-
-    <tr>
-      <td><%= addresseses.address %></td>
-    </tr>
-
-    <tr>
+      <td><%= addresses.address %></td>
       <td><%= addresses.name %></td>
+<<<<<<< HEAD
     </tr>
 
     <tr>
        <td><%= link_to "編集する", edit_address_path(genre.id), class: "btn btn-success" %></td>
        <td><%= link_to "削除する", addresses_path(addresses.id), method: :delete, class:'btn btn-danger' %></td>
+=======
+      <td><%= link_to "編集する", edit_address_path(addresses.id), class: "btn btn-success" %></td>
+      <td><%= link_to "削除する", address_path(addresses.id), method: :delete, class: "btn btn-danger" %></td>
+>>>>>>> origin/develop
     </tr>
    </tbody>
    <% end %>
