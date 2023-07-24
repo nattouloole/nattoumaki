@@ -8,5 +8,12 @@
         <td>数量</td>
         <td>小計</td>
     </tr>
+    <%= total = 0 %>
+    <% @cart_items.each do |cart_item| %>
+    <tr>
+        <td><%= image_tag cart_item.item.get_image, size: "100x100" %><%= cart_item.item.name %></td>
+        <td><%= cart_item.item.name %></td>
+        
+    </tr>
 </table>
 </div>
