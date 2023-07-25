@@ -6,48 +6,7 @@
 
     <%= form_with model: @customer, url:admin_customer_path(@customer), local:true do |f| %>
       <table class="table table-borderless">
-        
             <tr>
-<<<<<<< HEAD
-<<<<<<< HEAD
-              <th> 会員ID <%= @customer.id %></th>
-            </tr>
-
-            <tr>
-              <th> 氏名 <%= f.text_field :last_name %> <%= f.text_field :first_name %></th>
-            </tr>
-
-            <tr>
-              <th> フリガナ <%= f.text_field :last_name_kana %> <%= f.text_field :first_name_kana %></th>
-            </tr>
-
-            <tr>
-              <th> 郵便番号 <%= f.text_field :post_code %></th>
-            </tr>
-
-            <tr>
-              <th> 住所 <%= f.text_area :address %></th>
-            </tr>
-
-            <tr>
-              <th> 電話番号 <%= f.text_field :phone_number %></th>
-            </tr>
-
-            <tr>
-              <th> メールアドレス <%= f.text_field :email %></th>
-            </tr>
-
-            <tr>
-              <th>
-               <%= f.radio_button :is_withdrawal, true %>
-               <%= f.label :is_withdrawal_true, "退会"  %>
-               
-                <%= f.radio_button :is_withdrawal, false %>
-               <%= f.label :is_withdrawal_false, "有効"  %>
-              </th>
-            </tr>
-
-=======
               <th class="text-center">会員ID</th>
               <th><%= @customer.id %></th>
             </tr>  
@@ -80,60 +39,23 @@
             </tr>  
 
             <tr>
-=======
-              <th class="text-center">会員ID</th>
-              <th><%= @customer.id %></th>
-            </tr>  
-
-            <tr>
-              <th class="text-center">氏名</th>
-              <th><%= f.text_field :last_name %></th>
-              <th class="text-left"><%= f.text_field :first_name %></th>
-            </tr>  
-
-            <tr>
-              <th class="text-center">フリガナ</th>
-              <th><%= f.text_field :last_name_kana %></th>
-              <th class="text-left"><%= f.text_field :first_name_kana %></th>
-            </tr> 
-
-            <tr>
-              <th class="text-center">郵便番号</th>
-              <th><%= f.text_field :post_code %></th>
-            </tr>
-  
-            <tr>
-              <th class="text-center">住所</th>          
-              <th><%= f.text_area :address %></th>
-            </tr>  
-
-            <tr>
-              <th class="text-center">電話番号</th> 
-              <th><%= f.text_field :phone_number %></th>
-            </tr>  
-
-            <tr>
->>>>>>> origin/develop
               <th class="text-center">メールアドレス</th> 
               <th><%= f.text_field :email %></th>
             </tr>
-            
+
             <tr>
               <th class="text-center">会員ステータス</th>
               <th>
               <%= f.radio_button :is_withdrawal, :true %>
-              <%= f.label :is_sale_true, "有効" %>
+              <%= f.label :is_withdrawal_true, "退会" %>
               <%= f.radio_button :is_withdrawal, :false %>
-              <%= f.label :is_sale_false, "退会" %>
+              <%= f.label :is_withdrawal_false, "有効" %>
               </th>
-            </tr>  
-             
+            </tr>
+
             <tr>
               <th></th>
-<<<<<<< HEAD
->>>>>>> origin/develop
-=======
->>>>>>> origin/develop
+
 　　　　　　　<th><%= f.submit "変更を保存", class: "btn btn-success" %></th>
              </tr>
 

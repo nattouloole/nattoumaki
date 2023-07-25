@@ -1,6 +1,6 @@
 <div class='container'>
   <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 my-5 mx-auto">
       <p>ようこそ、ながのCAKEへ！<br>
       このサイトは、ケーキ販売のECサイトになります。<br>
       会員でない方も商品の閲覧はできますが、<br>
@@ -23,16 +23,10 @@
 		        <div class="text-left">¥<%= item.without_tax_price.to_s(:delimited, delimiter: ',') %></div>
 		      </div>
 	      <% end %>
+	      <div class='col-md-12 mt-4'>
+	        <p class="text-right"><%= link_to "全ての商品を見る>", items_path %></p>
+	      </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<div class='container'>
-  <div class='row'>
-    <div class-"col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <p></p>
-      <p class="text-right"><%= link_to "全ての商品を見る>", items_path %></p>
     </div>
   </div>
 </div>

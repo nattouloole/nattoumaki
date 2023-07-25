@@ -3,114 +3,46 @@
     <div class="col">
     <h2><%= @customer.full_name %>さんの会員詳細</h2>
       <table class="table table-borderless">
-        
-            <tr>
-<<<<<<< HEAD
-<<<<<<< HEAD
-              <th> 会員ID <%= @customer.id %></th>
-            </tr>
-
-<<<<<<< HEAD
-            <tr>
-              <th> 氏名 <%= @customer.last_name %> <%= @customer.first_name %></th>
-            </tr>
-
-            <tr>
-              <th> フリガナ <%= @customer.last_name_kana %> <%= @customer.first_name_kana %></th>
-            </tr>
-=======
-              <th> 氏名 <%= @customer.last_name %><%= @customer.first_name %></th>
-
-              <th> フリガナ <%= @customer.last_name_kana %><%= @customer.first_name_kana %></th>
->>>>>>> origin/develop
-
-            <tr>
-              <th> 郵便番号 <%= @customer.post_code %></th>
-            </tr>
-
-            <tr>
-              <th> 住所 <%= @customer.address %></th>
-            </tr>
-
-            <tr>
-              <th> 電話番号 <%= @customer.phone_number %></th>
-            </tr>
-
-            <tr>
-              <th> メールアドレス <%= @customer.email %></th>
-            </te>
-
-<<<<<<< HEAD
-            <tr>
-              <th> 会員ステータス <%= @customer.is_withdrawal %></th>
-            </tr>
-
-            <tr>
-              <th><%= link_to "編集する", edit_admin_customer_path(@customer.id), class:'btn btn-success' %></th>
-    |
-              <th><%= link_to "注文履歴一覧を見る", admin_orders_path(@customer.id), class:'btn btn-primary' %></th>
-=======
-              <th> 会員ステータス <%= @customer.is_withdrawal ? "有効" : "退会" %></th>
-
-              <th><%= link_to "編集する", edit_admin_customer_path(@customer) %></th>
-    |
-              <th><%= link_to "注文履歴一覧を見る", admin_orders_path %></th>
->>>>>>> origin/develop
-            </tr>
-          </thead>
-        </table>
-  </div>
-</div>
-=======
+             <tr>
               <th class="text-center">会員ID</th>
               <th><%= @customer.id %></th>
-              
-              
+             </tr>
+
             <tr>
               <th class="text-center">氏名</th>
               <th><%= @customer.last_name %><%= @customer.first_name %></th>
             </tr>
-=======
-              <th class="text-center">会員ID</th>
-              <th><%= @customer.id %></th>
-              
-              
-            <tr>
-              <th class="text-center">氏名</th>
-              <th><%= @customer.last_name %><%= @customer.first_name %></th>
-            </tr>
->>>>>>> origin/develop
 
             <tr>
               <th class="text-center">フリガナ</th>
               <th><%= @customer.last_name_kana %><%= @customer.first_name_kana %></th>
             </tr>
 
-            <tr> 
+            <tr>
               <th class="text-center">郵便番号</th>
               <th><%= @customer.post_code %></th>
-            </tr>  
+            </tr>
 
             <tr>
-              <th class="text-center">住所</th>  
+              <th class="text-center">住所</th>
               <th><%= @customer.address %></th>
-            </tr>  
+            </tr>
 
-            <tr>  
+            <tr>
               <th class="text-center">電話番号</th>
               <th><%= @customer.phone_number %></th>
             </tr>
-            
+
             <tr>
               <th class="text-center">メールアドレス</th>
               <th><%= @customer.email %></th>
             </tr>
-            
+
             <tr>
               <th class="text-center">会員ステータス</th>
-              <th class="text-success"><%= @customer.is_withdrawal ? "有効" : "退会" %></th>
+              <th class="text-success"><%= @customer.customer_status %></th>
             </tr>
-            
+
             <tr>
               <th></th>
               <th><%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success" %></th>
@@ -118,6 +50,6 @@
             </tr>
 
       </table>
+      </div>
     </div>
   </div>
->>>>>>> origin/develop
