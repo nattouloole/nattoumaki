@@ -23,7 +23,8 @@ end
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
     else
-      #render :comfirm
+      @cart_items = CartItem.all
+      render :comfirm
     end
     
     @cart_items = CartItem.all
@@ -35,6 +36,9 @@ end
   end
 
   def create
+    @order = Order.new(order_params)
+    @order.save
+    redirect_to orders_complete_path
   end
 
   def index

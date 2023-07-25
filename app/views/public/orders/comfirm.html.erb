@@ -14,8 +14,8 @@
     <% total = 0 %>
     <% @cart_items.each do |cart_item| %>
     <tr>
-        <td><%= image_tag cart_item.item.get_image, size: "100x100" %><%= cart_item.item.name %></td>
-        <td><%= cart_item.item.name %></td>
+        <td><%= image_tag cart_item.item.get_image, size: "70x70" %><%= cart_item.item.name %></td>
+        <!--<td><%= cart_item.item.name %></td>-->
 　　　　 </td>
           <td><%= cart_item.item.add_tax_sales_price %></td>
           <td><%= cart_item.quantity %></td>
@@ -46,8 +46,8 @@
         <td><%= @order.total_payment %></td>
       </tr>
 </table>
-
 </div>
+
 
     <div class="row">
         <div class='col-11 offset-1'>

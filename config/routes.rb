@@ -17,14 +17,16 @@ Rails.application.routes.draw do
   get "homes/about"=>"homes#about", as: "about"
 
   resources :items, only: [:index,:show]
-
-  resources :cart_items, only: [:index, :update, :destroy, :create]
+  
   delete "/cart_items/destroy_all" => "cart_items#destroy_all"
+  resources :cart_items, only: [:index, :update, :destroy, :create]
+  
 
-  resources :orders, only: [:new, :create, :index, :show]
+  
   post "/orders/comfirm" => "orders#comfirm"
   get "/orders/complete" => "orders#complete"
-
+  resources :orders, only: [:new, :create, :index, :show]
+  
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
   get "/customers/check" => "customers#check"
