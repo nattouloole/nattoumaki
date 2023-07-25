@@ -6,6 +6,8 @@ def new
 end
 
   def comfirm
+    @cart_items = current_customer.cart_items
+    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
     @order = Order.new(order_params)
     if params[:order][:address] == "0"
       @order.post_code = post_code
@@ -26,7 +28,7 @@ end
       @cart_items = CartItem.all
       render :comfirm
     end
-    
+
     @cart_items = CartItem.all
     @order_new = Order.new
   end
@@ -46,9 +48,9 @@ end
   end
 
   def show
-    @customer = current_customer
-    @order = Order.all
-    @order_items = @order.order_items
+    @order = current_customer.orders.find(params[:id])
+    @orders = Order.all
+    @order_items = @order.order_items.all
     @total = 0
     @totals = @order_items.inject(0) { |sum, order_items| sum + order_items.subtotal }
     @shipping_fee = 800

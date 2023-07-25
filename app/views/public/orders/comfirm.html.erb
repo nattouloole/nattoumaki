@@ -42,7 +42,7 @@
       </tr>
       <tr>
         <th>請求金額</th>
-        <% @order.total_payment = @order.shipping_fee + total.to_i %>
+        <% @order.total_payment = @order.shipping_fee + @total.round.to_i %>
         <td><%= @order.total_payment %></td>
       </tr>
 </table>
