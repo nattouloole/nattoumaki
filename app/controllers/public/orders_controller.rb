@@ -6,7 +6,10 @@ def new
 end
 
   def comfirm
+    @cart_items = current_customer.cart_items
+    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
     @order = Order.new(order_params)
+
     if params[:order][:address] == "0"
       @order.post_code = post_code
       @order.address = address
@@ -23,11 +26,11 @@ end
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
     else
-      @cart_items = CartItem.all
+      @cart_items = current_customer.cart_items
       render :comfirm
     end
-    
-    @cart_items = CartItem.all
+
+    @cart_items = current_customer.cart_items
     @order_new = Order.new
   end
 
@@ -38,7 +41,18 @@ end
   def create
     @order = Order.new(order_params)
     @order.save
-    redirect_to orders_complete_path
+    @cart_items = current_customer.cart_items
+
+      @cart_items.each do |cart_item|
+        @order_item = OrderItem.new
+        @order_item.item_id = cart_item.item.id
+        @order_item.order_id = @order.id
+        @order_item.quantity = cart_item.quantity
+        @order_item.price = cart_item.sum_of_price
+        @order_item.save
+      end
+       CartItem.destroy_all
+      redirect_to orders_complete_path
   end
 
   def index
