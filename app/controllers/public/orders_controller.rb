@@ -39,20 +39,18 @@ end
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = current_customer.orders.new(order_params)
     @order.save
-    @cart_items = current_customer.cart_items
-
-      @cart_items.each do |cart_item|
-        @order_item = OrderItem.new
-        @order_item.item_id = cart_item.item.id
-        @order_item.order_id = @order.id
-        @order_item.quantity = cart_item.quantity
-        @order_item.price = cart_item.sum_of_price
-        @order_item.save
-      end
-       CartItem.destroy_all
-      redirect_to orders_complete_path
+  current_customer.cart_items.each do |cart_item|
+  @order_item = OrderItem.new
+  @order_item.order_id = @order.id
+  @order_item.item_id = cart_item.item.id
+  @order_item.price = cart_item.item.add_tax_sales_price
+  @order_item.quantity = cart_item.quantity
+  @order_item.save
+  end
+  current_customer.cart_items.destroy_all
+  redirect_to orders_complete_path
   end
 
   def index
