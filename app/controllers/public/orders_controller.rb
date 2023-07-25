@@ -57,6 +57,6 @@ end
   private
 
   def order_params
-    params.require(:order).permit(:total_payment, :shipping_fee, :status, :name, :address, :post_code, :payment_method)
+    params.require(:order).permit(:total_payment, :shipping_fee, :status, :name, :address, :post_code, :payment_method,)
   end
 end

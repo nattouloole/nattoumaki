@@ -1,4 +1,5 @@
 class Public::CartItemsController < ApplicationController
+   before_action :login_check, only: [:create]
 
   def create
     @cart_item = current_customer.cart_items.new(cart_item_params)
@@ -50,5 +51,13 @@ class Public::CartItemsController < ApplicationController
     params.require(:cart_item).permit(:item_id, :customer_id, :quantity)
   end
 
+  private
+
+  def login_check
+   unless customer_signed_in?
+    flash[:alert] = "ログインしてください"
+    redirect_to items_path
+   end
+  end
 
 end
