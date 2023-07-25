@@ -16,6 +16,7 @@
     </tr>
   </thead>
 
+
   <tbody>
     <% @orders.each do |order| %>
 
@@ -25,7 +26,7 @@
       <tr><%= order.total_payment %></tr>
       <tr><%= order.status %></tr>
       <tr><%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %></tr>
-    </tbody>
+     </tbody>
   <% end %>
 </table>
 </div>

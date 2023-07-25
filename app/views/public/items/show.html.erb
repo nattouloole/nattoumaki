@@ -13,7 +13,13 @@
       <%= f.hidden_field :item_id, :value => @item.id %>
       <div class="mt-5">
        個数 <%= f.select :quantity, *[1..10] %>
-	   　<%= f.submit "カートに入れる", class:'btn btn-success'%>
+       
+       <% if customer_signed_in? %>
+	     <%= f.submit "カートに入れる", class:'btn btn-success'%>
+	     <% else %>
+	     <button type="button" class="btn btn-success btn-lg" disabled>カートに入れる</button>
+	     <div class="text-danger">ログインして下さい</div>
+	     <% end %>
 	  </div>
 	 <% end %>
 	</div>
