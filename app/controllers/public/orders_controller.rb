@@ -1,46 +1,54 @@
 class Public::OrdersController < ApplicationController
-  
-  def new
-    @order = Order.new
-    @addresses = Address.all
-  end
-  
+
+def new
+@order = Order.new
+@addresses = Address.all
+end
+
   def comfirm
-    @order = Order.new(params)
-    if params[:order][:select_address] == "0"
-      @order.post_code = current_end_user.post_code
-      @order.address = current_end_user.address
-      @order.name = current_end_user.first_name + current_end_user.last_name
-      
-    elsif params[:order][:select_address] == "1"
-       @address = Address.find(params[:order][:address_id])
-       @order.post_code = @address.post_code
-       @order.address = @address.address
-       @order.name = @address.name
-       
-    elsif params[:order][:select_address] == "2"
-      @order.end_user_id = current_end_user.id
+    @order = Order.new(order_params)
+    if params[:order][:address] == "0"
+      @order.post_code = post_code
+      @order.address = address
+      @order.name = first_name + last_name
+
+    elsif params[:order][:address] == "1"
+      @address = Address.find(params[:order][:address_id])
+      @order.post_code = @address.post_code
+      @order.address = @address.address
+      @order.name = @address.name
+
+    elsif params[:order][:address] == "2"
+      @order.post_code = params[:order][:post_code]
+      @order.address = params[:order][:address]
+      @order.name = params[:order][:name]
+    else
+      @cart_items = CartItem.all
+      render :comfirm
     end
-      @cart_items = current_end_user.cart_items
-      @order_new = Order.new
-      render :confirm
-  end
-  
-  def complete
     
+    @cart_items = CartItem.all
+    @order_new = Order.new
   end
-  
+
+  def complete
+
+  end
+
   def create
+    @order = Order.new(order_params)
+    @order.save
+    redirect_to orders_complete_path
   end
-  
+
   def index
   end
-  
+
   def show
   end
-  
+
   private
-  
+
   def order_params
     params.require(:order).permit(:total_payment, :shipping_fee, :status, :name, :address, :post_code, :payment_method)
   end
