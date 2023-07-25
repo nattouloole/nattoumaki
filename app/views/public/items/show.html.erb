@@ -1,17 +1,19 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-4 p-3 mt-4">
       <%= image_tag @item.get_image, size: '400x240' %>
     </div>
-    <div class="col-md-6 offset-md-1">
+    <div class="col-md-6 offset-md-1 p-3 mt-4">
      <h1><%= @item.name %></h1>
-     <h2><%= @item.explanation %></h2>
-     <h3>¥<%= @item.without_tax_price.to_s(:delimited, delimiter: ',') %>(税込)</h3>
+     <h4><%= @item.explanation %></h4>
+     <div class="mt-4">
+      <h4>¥<%= @item.without_tax_price.to_s(:delimited, delimiter: ',') %>(税込)</h4>
+     </div>
      <%= form_for @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
       <%= f.hidden_field :item_id, :value => @item.id %>
-      <div>
-       <%= f.select :quantity, *[1..10] %>
-	   <%= f.submit "カートに入れる", class:'btn btn-success'%>
+      <div class="mt-5">
+       個数 <%= f.select :quantity, *[1..10] %>
+	   　<%= f.submit "カートに入れる", class:'btn btn-success'%>
 	  </div>
 	 <% end %>
 	</div>

@@ -48,9 +48,9 @@
               <th class="text-center">会員ステータス</th>
               <th>
               <%= f.radio_button :is_withdrawal, :true %>
-              <%= f.label :is_sale_true, "有効" %>
+              <%= f.label :is_withdrawal_true, "退会" %>
               <%= f.radio_button :is_withdrawal, :false %>
-              <%= f.label :is_sale_false, "退会" %>
+              <%= f.label :is_withdrawal_false, "有効" %>
               </th>
             </tr>
 
