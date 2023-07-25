@@ -1,9 +1,9 @@
 <h2>配送先登録/一覧</h2>
 <div class="container">
 <div class="row">
-<table class="table table-striped">
+<%= form_with model: @address, url:"/addresses", local:true do |f| %>
+ <table class="table table-striped">
   <thead>
-    <%= form_with model: @address, url:"/addresses", local:true do |f| %>
 
     <tr>
       <th> 郵便番号(ハイフンなし) <%= f.text_field :post_code %></th>
@@ -19,8 +19,8 @@
 
       <th><%= f.submit "新規登録", class:'btn btn-success' %></th>
    </thead>
-  <% end %>
-</table>
+ </table>
+<% end %>
 
   <table class='table table-hover table-inverse'>
     <tbody>
@@ -37,16 +37,11 @@
       <td><%= addresses.post_code %></td>
       <td><%= addresses.address %></td>
       <td><%= addresses.name %></td>
-<<<<<<< HEAD
     </tr>
 
     <tr>
-       <td><%= link_to "編集する", edit_address_path(genre.id), class: "btn btn-success" %></td>
+       <td><%= link_to "編集する", edit_address_path(addresses.id), class: "btn btn-success" %></td>
        <td><%= link_to "削除する", addresses_path(addresses.id), method: :delete, class:'btn btn-danger' %></td>
-=======
-      <td><%= link_to "編集する", edit_address_path(addresses.id), class: "btn btn-success" %></td>
-      <td><%= link_to "削除する", address_path(addresses.id), method: :delete, class: "btn btn-danger" %></td>
->>>>>>> origin/develop
     </tr>
    </tbody>
    <% end %>
