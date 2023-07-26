@@ -6,6 +6,7 @@ def new
 end
 
   def comfirm
+
     @cart_items = current_customer.cart_items
     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
     @order = Order.new(order_params)
@@ -40,6 +41,20 @@ end
   def create
     @order = Order.new(order_params)
     @order.save
+
+    @order = current_customer.orders.new(order_params)
+    @order.save
+  
+   current_customer.cart_items.each do |cart_item|
+    @order_item = OrderItem.new
+    @order_item.order_id = @order.id
+    @order_item.item_id = cart_item.item.id
+    @order_item.price = cart_item.item.add_tax_sales_price
+    @order_item.quantity = cart_item.quantity
+    @order_item.save
+   end
+    current_customer.cart_items.destroy_all
+
     redirect_to orders_complete_path
   end
 
