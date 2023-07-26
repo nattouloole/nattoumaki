@@ -1,5 +1,4 @@
 class Admin::OrdersController < ApplicationController
-  before_action :authenticate_admin!
   
   def index
     @orders = Order.all.page(params[:page]).per(10)
@@ -7,26 +6,25 @@ class Admin::OrdersController < ApplicationController
   
   def show
     @order = Order.find(params[:id])
-    @customer = orders.customer.find(params[:id])
-    @orders = Order.all
-    @order_items = @customer.order_items.all
-    @total = 0
-    @totals = @order_items.inject(0) { |sum, order_items| sum + order_items.subtotal }
+    @order_items = @order.order_items
     @shipping_fee = 800
   end
   
   def update
     @order = Order.find(params[:id])
-    @order_details = OrderDetail.where(order_id: params[:id])
+    @order_items = OrderItem.where(order_id: params[:id])
     if @order.update(order_params)
-       @order_details.update_all(making_status: 1) if @order.status == "payment_confirmation"
+     @order_items.update_all(making_status: 1) if @order.status == "confirm_payment"  
     end   
-       redirect_back(fallback_location: root_path)
+    redirect_to admin_order_path(@order)
   end
   
   private
 
   def order_params
+    if params["order"]["status"].present?
+      params["order"]["status"] = params["order"]["status"].to_i
+    end
     params.require(:order).permit(:customer_id, :total_payment, :shipping_fee, :status, :name, :address, :post_code, :payment_method)
   end
   
