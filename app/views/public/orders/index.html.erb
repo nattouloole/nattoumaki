@@ -1,25 +1,28 @@
 <div class="container">
-<div class="row">
-<div class="col">
+<div class='row mt-5'>
+<div class="col-12 px-sm-0 offset-sm-0">
 <table class="table table-bordered">
 
-<h3>注文履歴一覧</h3>
+<h3 class="my-4">注文履歴一覧</h3>
 
   <tbody>
-    <tr>
-      <td>注文日</td>
-      <td>配送先</td>
-      <td>注文商品</td>
-      <td>支払金額</td>
-      <td>ステータス</td>
-      <td>注文詳細</td>
+    <tr class="table-secondary">
+      <td class="text-center">注文日</td>
+      <td class="text-center">配送先</td>
+      <td class="text-center">注文商品</td>
+      <td class="text-center">支払金額</td>
+      <td class="text-center">ステータス</td>
+      <td class="text-center">注文詳細</td>
     </tr>
 
     <% @orders.each do |order| %>
-    <tr>
+    <tr class="text-center">
       <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
       <td><%= order.customer.address %></td>
-      <td><%= order.order_items.name %></td>
+      <td><%  order.order_items.each do |order_item| %>
+          <%= order_item.item.name %>
+          <% end %>
+      </td>
       <td><%= order.total_payment %></td>
       <td><%= order.status %></td>
       <td><%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %></td>
