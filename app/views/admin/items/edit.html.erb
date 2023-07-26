@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-xs-12">
 
 <h2 class="my-5">商品編集</h2>
 
 <%= form_with model: @item, url:admin_item_path, local:true do |f| %>
 <table class="table table-borderless table-sm">
    <tr>
-    <th>商品画像</th>
+    <th style="width:200px;">商品画像</th>
     <td><%= f.file_field :image %></td>
   </tr>
 
