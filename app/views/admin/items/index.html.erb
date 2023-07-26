@@ -1,23 +1,30 @@
-<h2>商品一覧</h2>
+<div class="container">
+  <div class="row">
+    <div class="col">
 
-<table class="table">
-  <tr>
+<h3>商品一覧</h3>
+
+<table class="table table-borderless">
+  <tr class="table-secondary">
     <th>商品ID</th>
     <th>商品名</th>
-    <th>税抜き価格</th>
+    <th class="text-right">税抜き価格</th>
     <th>ジャンル</th>
-    <th>ステータス</th>
+    <th class="text-right">ステータス</th>
   </tr>
 
 <% @items.each do |item| %>
   <tr>
     <td><%= item.id %></td>
     <td><%= link_to item.name, admin_item_path(item.id) %></td>
-    <td><%= item.without_tax_price %></td>
+    <td class="text-right"><%= item.without_tax_price %></td>
     <td><%= item.genre.name %></td>
-    <td><%= item.is_sale ? "販売中" : "販売停止中" %></td>
+    <td class="text-right"><%= item.is_sale ? "販売中" : "販売停止中" %></td>
   </tr>
 <% end %>
 </table>
+   </div>
+  </div>
+</div>
 
 <%= paginate @items %>
