@@ -39,7 +39,6 @@ end
   end
 
   def create
-
     @order = Order.new(order_params)
     @order.save
 
@@ -64,17 +63,14 @@ end
   end
 
   def show
-    @customer = current_customer
-    @order = Order.all
+    @order = Order.find(params[:id])
     @order_items = @order.order_items
-    @total = 0
-    @totals = @order_items.inject(0) { |sum, order_items| sum + order_items.subtotal }
     @shipping_fee = 800
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:total_payment, :shipping_fee, :status, :name, :address, :post_code, :payment_method,)
+    params.require(:order).permit(:total_payment, :shipping_fee, :status, :name, :address, :post_code, :payment_method)
   end
 end
