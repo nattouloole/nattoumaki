@@ -1,3 +1,6 @@
+<div class='container'>
+<div class='row mt-3'>
+<div class="col-sm-9 px-sm-0 offset-sm-1">
 <h2>会員情報編集</h2>
 
 <%= form_with model: @customer, url:customers_information_path(@customer), local:true do |f| %>
@@ -5,13 +8,13 @@
 
    <tr>
     <th>氏名</th>
-    <td><%= f.text_field :last_name %><%= f.text_field :first_name %></td>
+    <td><%= f.text_field :last_name %>　<%= f.text_field :first_name %></td>
   </tr>
 
 
   <tr>
     <th>フリガナ</th>
-    <th><%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %></th>
+    <th><%= f.text_field :last_name_kana %>　<%= f.text_field :first_name_kana %></th>
   </tr>
 
   <tr>
@@ -21,7 +24,7 @@
 
   <tr>
     <th>住所</th>
-    <th><%= f.text_field :address %></th>
+    <th><%= f.text_field :address, size: 50 %></th>
   </tr>
 
   <tr>
@@ -38,5 +41,8 @@
     <td><%= f.submit "編集内容を保存", class:"btn btn-success" %></td>
     <td><%= link_to "退会する", customers_check_path, class:"btn btn-danger" %></td>
   <tr>
-<% end %>    
-</table>  
+<% end %>
+</table>
+</div>
+</div>
+</div>
