@@ -1,8 +1,8 @@
-<h2>配送先登録/一覧</h2>
 <div class="container">
 <div class="row">
 <%= form_with model: @address, url:"/addresses", local:true do |f| %>
- <table class="table table-striped">
+ <table class="table table-hover">
+  <h2>配送先登録/一覧</h2>
   <thead>
 
     <tr>
@@ -15,14 +15,13 @@
 
    <tr>
       <th> 宛名 <%= f.text_field :name %></th>
-   </tr>
-
       <th><%= f.submit "新規登録", class:'btn btn-success' %></th>
+   </tr>
    </thead>
  </table>
 <% end %>
 
-  <table class='table table-hover table-inverse'>
+  <table class='table table-bordered'>
     <tbody>
       <tr>
       <td>郵便番号</td>
@@ -37,11 +36,8 @@
       <td><%= addresses.post_code %></td>
       <td><%= addresses.address %></td>
       <td><%= addresses.name %></td>
-    </tr>
-
-    <tr>
-       <td><%= link_to "編集する", edit_address_path(addresses.id), class: "btn btn-success" %></td>
-       <td><%= link_to "削除する", addresses_path(addresses.id), method: :delete, class:'btn btn-danger' %></td>
+      <td><%= link_to "編集する", edit_address_path(addresses.id), class: "btn btn-success" %></td>
+      <td><%= link_to "削除する", addresses_path(addresses.id), method: :delete, class:'btn btn-danger' %></td>
     </tr>
    </tbody>
    <% end %>

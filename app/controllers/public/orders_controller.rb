@@ -38,18 +38,8 @@ end
   end
 
   def create
-    @order = current_customer.orders.new(order_params)
+    @order = Order.new(order_params)
     @order.save
-  
-   current_customer.cart_items.each do |cart_item|
-    @order_item = OrderItem.new
-    @order_item.order_id = @order.id
-    @order_item.item_id = cart_item.item.id
-    @order_item.price = cart_item.item.add_tax_sales_price
-    @order_item.quantity = cart_item.quantity
-    @order_item.save
-   end
-    current_customer.cart_items.destroy_all
     redirect_to orders_complete_path
   end
 
@@ -58,17 +48,14 @@ end
   end
 
   def show
-    @customer = current_customer
-    @order = Order.all
+    @order = Order.find(params[:id])
     @order_items = @order.order_items
-    @total = 0
-    @totals = @order_items.inject(0) { |sum, order_items| sum + order_items.subtotal }
     @shipping_fee = 800
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:total_payment, :shipping_fee, :status, :name, :address, :post_code, :payment_method,)
+    params.require(:order).permit(:total_payment, :shipping_fee, :status, :name, :address, :post_code, :payment_method)
   end
 end
