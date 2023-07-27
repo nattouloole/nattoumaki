@@ -1,97 +1,79 @@
 <div class="container">
 <h2>注文履歴詳細</h2>
-<div class="row">
 
-  <div class="col-xs-6">
-      <div>
-        <p>
-          <strong class="col-xs-2">購入者</strong>
-          <%= link_to @order.customer.full_name, admin_customer_path(current_customer) %>
-        </p>
-      </div>
-      <br>
-      <div>
-          <p>
-          <strong class="col-xs-2">注文日</strong>
-          <%= @order.created_at.strftime('%Y/%m/%d') %>
-          </p>
-      </div>
-      <br>
-      <div>
-          <p>
-          <strong class="col-xs-2">配送先</strong>
-          <%= @order.customer.address %>
-          </p>
-      </div>
-      <br>
-      <div>
-          <p>
-          <strong class="col-xs-2">支払い方法</strong>
-          <%= @order.payment_method %>
-          </p>
-      </div>
-      <br>
-      <div>
-          <p>
-            <strong class="col-xs-4">注文ステータス</strong>
-　          <%= form_with model: @order, url:admin_order_path, local:true do |f| %>
-            <%= f.select :status, [['wait_payment',0],['confirm_payment',1],['making',2],['preparing_ship',3],['finish_prepare',4]], selected: Order.statuses[@order.status] %>
-            <%= f.submit "更新",class: "btn btn-success" %>
-　         <% end %>
-          </p>
-      </div>
-  </div>
-</div>
+ <div class="row">
+  <div class="col-xs-12">
+    <table class="table table-borderless">
+     <tr>
+      <th>購入者</th>
+      <th><%= link_to @order.customer.full_name, admin_customer_path(current_customer) %></th>
+     </tr>
+     <tr>
+      <th>注文日</th>
+      <th><%= @order.created_at.strftime('%Y/%m/%d') %></th>
+     </tr>
+     <tr>
+      <th>配送先</th>
+      <th><%= @order.customer.address %></th>
+     </tr>
+     <tr>
+      <th>支払い方法</th>
+      <th><%= @order.payment_method %></th>
+     </tr>
+     <tr>
+      <th>注文ステータス</th>
+　    <%= form_with model: @order, url:admin_order_path, local:true do |f| %>
+      <th>
+        <%= f.select :status, [['wait_payment',0],['confirm_payment',1],['making',2],['preparing_ship',3],['finish_prepare',4]], selected: Order.statuses[@order.status] %>
+        <%= f.submit "更新",class: "btn btn-success" %>
+　      <% end %>
+　    </th>
+     </tr>
+    </table>
+   </div>
 
 <div class="row">
-  <div class="col-xs-8">
-   <table class="table">
-    <tr>
-     <th>商品ID</th>
-     <th>単価(税込)</th>
-     <th>数量</th>
-     <th>小計</th>
-     <th>製作ステータス</th>
-     <th></th>
-    </tr>
-
-   <% @order_items.each do |order_item| %>
-    <tr>
-     <td><%= order_item.item.name %></td>
-     <td><%= order_item.item.add_tax_sales_price %></td>
-     <td><%= order_item.quantity %></td>
-     <td><%= order_item.item.add_tax_sales_price*order_item.quantity %></td>
-     <%= form_with model: order_item, url:admin_orders_detail_path(order_item), local:true do |f| %>
-     <td><%= f.select :making_status, [['impossible_manufacture',0],['waiting_manufacture',1],['manufacturing',2],['finish',3]], selected: OrderItem.making_statuses[order_item.making_status] %></td>
-     <th><%= f.submit "更新",class: "btn btn-success" %></th>
-    </tr>
-   <% end %>
-   <% end %>
-   </table>
-  </div>
-
   <div class="col-xs-4">
-    <div>
-      <p>
-        <strong class="col-xs-3">商品合計</strong>
-        <%= @order.total_price %>円
-      </p>
-    </div>
-    <br>
-    <div>
-      <p>
-        <strong class="col-xs-2">送料</strong>
-        <%= @shipping_fee %>円
-      </p>
-    </div>
-    <br>
-    <div>
-      <p>
-        <strong class="col-xs-4">請求金額合計</strong>
-        <%= @order.total_price + @shipping_fee %>円
-      </p>
-    </div>
-    <br>
+    <table class="table">
+     <tr>
+      <th>商品ID</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>製作ステータス</th>
+      <th></th>
+     </tr>
+
+     <% @order_items.each do |order_item| %>
+     <tr>
+      <td><%= order_item.item.name %></td>
+      <td><%= order_item.item.add_tax_sales_price %></td>
+      <td><%= order_item.quantity %></td>
+      <td><%= order_item.item.add_tax_sales_price*order_item.quantity %></td>
+      <%= form_with model: order_item, url:admin_orders_detail_path(order_item), local:true do |f| %>
+      <td><%= f.select :making_status, [['impossible_manufacture',0],['waiting_manufacture',1],['manufacturing',2],['finish',3]], selected: OrderItem.making_statuses[order_item.making_status] %></td>
+      <th><%= f.submit "更新",class: "btn btn-success" %></th>
+     </tr>
+     <% end %>
+     <% end %>
+    </table>
   </div>
- </div>
+
+  <div class="col-xs-6 col-md-offset-2">
+    <table class="table table-borderless">
+     <tr>
+      <th>商品合計</th>
+      <th><%= @order.total_price %>円</th>
+     </tr>
+
+     <tr>
+      <th>送料</th>
+      <th><%= @shipping_fee %>円</th>
+     </tr>
+     <tr>
+      <th>請求金額合計</th>
+      <th><%= @order.total_price + @shipping_fee %>円</th>
+     </tr>
+    </table>
+  </div>
 </div>
