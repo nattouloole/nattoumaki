@@ -1,26 +1,26 @@
 <div class="container">
-<div class="row mb-3"><h2>注文情報確認</h2></div>
+<div class="row mb-3"><h3 class="table-secondary">注文情報確認</h3></div>
 
 
 <div class="row">
 <div class='col-7 offset-1'>
-  <table class='table table-bordered'>
-    <tr>
-        <td>商品名</td>
-        <td>単価(税込)</td>
-        <td>数量</td>
-        <td>小計</td>
+  <table class='table table-bordered border-dark'>
+    <tr class="table-secondary">
+        <td class="border-dark">商品名</td>
+        <td class="border-dark">単価(税込)</td>
+        <td class="border-dark">数量</td>
+        <td class="border-dark">小計</td>
     </tr>
     <% total = 0 %>
     <% @cart_items.each do |cart_item| %>
     <tr>
-        <td><%= image_tag cart_item.item.get_image, size: "30x50" %><%= cart_item.item.name %></td>
+        <td class="border-dark"><%= image_tag cart_item.item.get_image, size: "70x50" %><%= cart_item.item.name %></td>
             <%= cart_item.item.name %>
 　　　　 </td>
-          <td><%= cart_item.item.add_tax_sales_price %></td>
-          <td><%= cart_item.quantity %></td>
+          <td class="border-dark"><%= cart_item.item.add_tax_sales_price %></td>
+          <td class="border-dark"><%= cart_item.quantity %></td>
 
-          <td>
+          <td class="border-dark">
         　<%= cart_item.sum_of_price %>
           </td>
          </tr>
@@ -31,18 +31,18 @@
  <div class="col-3">
     <table class="table table-bordered">
         <tr>
-        <th>送料</th>
+        <th class="table-secondary border-dark">送料</th>
         <% @order.shipping_fee = 800 %>
-        <td><%= @order.shipping_fee %></td>
+        <td class="border-dark"><%= @order.shipping_fee %></td>
         </tr>
         <tr>
-        <th>商品合計</th>
-        <td><%= @total.round.to_i %></td>
+        <th class="table-secondary border-dark">商品合計</th>
+        <td class="border-dark"><%= @total.round.to_i %></td>
         </tr>
         <tr>
-          <th>請求金額</th>
+          <th class="table-secondary border-dark">請求金額</th>
           <% @order.total_payment = @order.shipping_fee + @total.round.to_i %>
-           <td><%= @order.total_payment %></td>
+           <td class="border-dark"><%= @order.total_payment %></td>
         </tr>
     </table>
  </div>
@@ -51,7 +51,7 @@
     <div class="row">
         <div class='col-11 offset-1'>
             <table class="table table-borderless">
-                <tr><th class="col-1">支払い方法</th><td class="col-10"><%= @order.payment_method %></td></tr>
+                <tr><th class="col-1">支払い方法</th><td class="col-10"><%= @order.payment_method_i18n %></td></tr>
                 <tr><th class="col-1">お届け先</th><td class="col-10">
                 <%= @order.post_code %>
                 <%= @order.address %>
