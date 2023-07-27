@@ -5,7 +5,7 @@
     </div>
     <div class="col-md-6 offset-md-1 p-3 mt-4">
      <h1><%= @item.name %></h1>
-     <h4><%= @item.explanation %></h4>
+     <h4><%=safe_join(@item.explanation.split("\n"),tag(:br))%></h4>
      <div class="mt-4">
       <h4>¥<%= @item.without_tax_price.to_s(:delimited, delimiter: ',') %>(税込)</h4>
      </div>
