@@ -19,6 +19,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
     # redirect_to request.referer
   # end
   
+  def after_sign_up_path_for(resource)
+    customers_mypage_path(current_customer.id)
+  end
+  
   private
 
   def configure_permitted_parameters
