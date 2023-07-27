@@ -11,9 +11,9 @@ end
     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
     @order = Order.new(order_params)
     if params[:order][:address_number] == "0"
-      @order.post_code = post_code
-      @order.address = address
-      @order.name = first_name + last_name
+      @order.post_code = current_customer.post_code
+      @order.address = current_customer.address
+      @order.name = current_customer.first_name + current_customer.last_name
 
     elsif params[:order][:address_number] == "1"
       @address = Address.find(params[:order][:address_id])
