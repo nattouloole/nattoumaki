@@ -23,11 +23,6 @@ class Admin::OrdersDetailsController < ApplicationController
   private
 
   def order_item_params
-  
-    if params["order_item"]["making_status"].present?
-      params["order_item"]["making_status"] = params["order_item"]["making_status"].to_i
-    end  
-  
     params.require(:order_item).permit(:order_id, :item_id, :quantity, :price, :making_status)
   end
   

@@ -23,9 +23,7 @@ class Admin::OrdersController < ApplicationController
   private
 
   def order_params
-    if params["order"]["status"].present?
-      params["order"]["status"] = params["order"]["status"].to_i
-    end
+
     params.require(:order).permit(:customer_id, :total_payment, :shipping_fee, :status, :name, :address, :post_code, :payment_method)
   end
   
