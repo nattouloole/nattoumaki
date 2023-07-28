@@ -1,9 +1,7 @@
 <div class="container">
   <div class="row mt-4">
     <div class="col-sm-9 px-sm-0 offset-sm-3">
-
-<h2 class="my-5">商品編集</h2>
-
+ <h3 class="table-secondary d-inline-flex pl-5 pr-5 mt-4 mb-5">商品編集</h3>
 <%= form_with model: @item, url:admin_item_path, local:true do |f| %>
 <table class="table table-borderless table-sm">
    <tr>
@@ -33,7 +31,7 @@
   </tr>
 
   <tr>
-   <th>販売ステータス</th>  
+   <th>販売ステータス</th>
    <th>
     <%= f.radio_button :is_sale, :true %>
     <%= f.label :is_sale_true, "販売中" %>
