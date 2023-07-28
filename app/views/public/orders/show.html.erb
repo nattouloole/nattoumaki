@@ -1,30 +1,29 @@
 <div class="container">
-  <h2>注文履歴詳細</h2>
-  <div class="row">
+ <h4 class="table-secondary d-inline-flex pl-5 pr-5 mt-4 mb-4 ml-5">注文履歴詳細</h4>
+  <div class="row ml-3">
    <div class="col">
-    <p>
      <strong>注文情報</strong>
     </p>
     <table class="table table-bordered">
 
     <tbody>
       <tr>
-        <td class="table-secondary">注文日</td>
+        <td class="table-secondary"><strong>注文日</strong></td>
         <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
       </tr>
 
       <tr>
-        <td class="table-secondary">配送先</td>
+        <td class="table-secondary"><strong>配送先</strong></td>
         <td><%= @order.customer.address %></td>
       </tr>
 
       <tr>
-        <td class="table-secondary">支払方法</td>
+        <td class="table-secondary"><strong>支払方法</strong></td>
         <td><%= @order.payment_method_i18n %></td>
       </tr>
 
       <tr>
-        <td class="table-secondary">ステータス</td>
+        <td class="table-secondary"><strong>ステータス</td>
         <td><%= @order.status_i18n %></td>
       </tr>
     </tbody>
@@ -36,10 +35,10 @@
     <table class="table table-bordered">
       <tbody>
     　 <tr class="table-secondary">
-        <td>商品</td>
-         <td>単価(税込み)</td>
-         <td>個数</td>
-        <td>小計</td>
+        <td><strong>商品</strong></td>
+         <td><strong>単価(税込み)</strong></td>
+         <td><strong>個数</strong></td>
+        <td><strong>小計</strong></td>
     　  </tr>
       </tbody>
 
@@ -64,17 +63,17 @@
 
       <tbody>
         <tr>
-          <td class="table-secondary">商品合計</td>
-          <td><%= @order.total_price %></td>
+          <td class="table-secondary"><strong>商品合計</strong></td>
+          <td><%= @order.total_price %><strong></td>
         </tr>
 
         <tr>
-          <td class="table-secondary">配送料</td>
+          <td class="table-secondary"><strong>配送料</strong></td>
           <td><%= @shipping_fee %></td>
         </tr>
 
         <tr>
-          <td class="table-secondary">合計金額</td>
+          <td class="table-secondary"><strong>合計金額</strong></td>
           <td><%= @order.total_price + @shipping_fee %></td>
         </tr>
       </tbody>

@@ -2,7 +2,7 @@
   <div class="row mt-4">
     <div class="col-sm-9 px-sm-0 offset-sm-3">
 
-<h2 class="my-5">商品新規登録</h2>
+<h3 class="table-secondary d-inline-flex pl-4 pr-4 mt-4 mb-5">商品新規登録</h3>
 
 <%= form_with model: @item, url:admin_items_path, local:true do |f| %>
 <table class="table table-borderless table-sm">
@@ -34,7 +34,7 @@
   </tr>
 
   <tr>
-   <th>販売ステータス</th>  
+   <th>販売ステータス</th>
    <th>
     <%= f.radio_button :is_sale, :true %>
     <%= f.label :is_sale_true, "販売中" %>
@@ -48,7 +48,7 @@
   <%= f.submit "新規登録",class: "btn btn-success" %>
 </div>
 <% end %>
-  
+
     </div>
   </div>
-</div> 
+</div>
