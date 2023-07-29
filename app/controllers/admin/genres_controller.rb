@@ -8,8 +8,13 @@ class Admin::GenresController < ApplicationController
   
   def create
     @genre = Genre.new(genre_params)
-    @genre.save
-    redirect_back(fallback_location: root_path)
+    if @genre.save
+     redirect_back(fallback_location: root_path)
+    else
+     @genre = Genre.new
+     @genres = Genre.all
+     render :index
+    end
   end
   
   def edit
