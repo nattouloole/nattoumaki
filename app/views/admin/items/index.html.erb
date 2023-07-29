@@ -1,0 +1,38 @@
+<div class="container">
+  <h3 class="table-secondary d-inline-flex pl-5 pr-5 mt-5">商品一覧</h3>
+  <div class="row">
+    <div class="col">
+<%= link_to new_admin_item_path do %>
+</div>
+<div class="col offset-9 mt-2">
+  <button type="button" class="btn shadow rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
+<% end %>
+</div>
+</div>
+
+<div class="row">
+<div class="col">
+<table class="table table-borderless">
+  <tr class="table-secondary">
+    <th>商品ID</th>
+    <th>商品名</th>
+    <th class="text-right">税抜き価格</th>
+    <th>ジャンル</th>
+    <th class="text-right">ステータス</th>
+  </tr>
+
+<% @items.each do |item| %>
+  <tr>
+    <td><%= item.id %></td>
+    <td><%= link_to item.name, admin_item_path(item.id) %></td>
+    <td class="text-right"><%= item.without_tax_price %></td>
+    <td><%= item.genre.name %></td>
+    <td class="text-right"><%= item.is_sale ? "販売中" : "販売停止中" %></td>
+  </tr>
+<% end %>
+</table>
+   </div>
+  </div>
+</div>
+
+<%= paginate @items %>

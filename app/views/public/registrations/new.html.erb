@@ -1,0 +1,71 @@
+<div class='container'>
+<h3 class="table-secondary d-inline-flex pl-5 pr-5 mt-5 ml-5">新規会員登録</h3>
+ <div class='row mt-4'>
+  <div class="col-sm-9 px-sm-0 offset-sm-1">
+   <%= form_with model: @customer, url: customer_registration_path do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
+    <table class="table table-borderless">
+
+    <tr>
+      <th><%= f.label :'お名前', class: 'text-right'%></th>
+      <th>(姓)<%= f.text_field :first_name, autofocus: true, class: "name", size: 23 %>
+      　(名)<%= f.text_field :last_name, autofocus: true, class: "name", size: 23 %></th>
+    </tr>
+
+    <tr>
+      <th><%= f.label :'フリガナ'%></th>
+      <th>(セイ)<%= f.text_field :first_name_kana, autofocus: true, class: "name", size: 23 %>
+      　(メイ)<%= f.text_field :last_name_kana, autofocus: true, class: "name", size: 23 %></th>
+    </tr>
+
+    <tr>
+      <th><%= f.label :'メースアドレス' %></th>
+      <th><%= f.email_field :email, autofocus: true, autocomplete: "email", size: 23 %></th>
+    </tr>
+
+    <tr>
+      <th><%= f.label :'郵便番号(ハイフンなし)' %></th>
+      <th><%= f.text_field :post_code, autofocus: true, autocomplete: "post_code", size: 23 %></th>
+    </tr>
+
+    <tr>
+      <th><%= f.label :'住所' %></th>
+      <th><%= f.text_field :address, autofocus: true, autocomplete: "address", size: 50 %></th>
+    </tr>
+
+    <tr>
+      <th><%= f.label :'電話番号(ハイフンなし)' %></th>
+      <th><%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", size: 23 %></th>
+    </tr>
+
+    <tr>
+      <th><%= f.label :'パスワード' %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> 文字以上)</em>
+      <% end %>
+      </th>
+      <th><%= f.password_field :password, autocomplete: "new-password", size: 23 %></th>
+    </tr>
+
+    <tr>
+      <th><%= f.label :'パスワード(確認用)' %></th>
+      <th><%= f.password_field :password_confirmation, autocomplete: "new-password", size: 23 %></th>
+    </tr>
+
+    <tr>
+      <th><%= f.submit "新規登録", class:'btn btn-success' %></th>
+    </tr>
+   </table>
+   <% end %>
+  </div>
+ </div>
+</div>
+
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-4 px-sm-0 offset-sm-1">
+     <p><%= render "public/shared/links" %></p>
+    </div>
+  </div>
+</div>
